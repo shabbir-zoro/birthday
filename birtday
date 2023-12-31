@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #fdeff2; /* Light pink background */
+            color: #333; /* Dark gray font color */
+        }
+        h1 {
+            font-size: 4em;
+            margin-top: 50px;
+            color: #f386a1; /* Pinkish font color */
+            font-family: 'Pacifico', cursive;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out, color 0.5s ease-in-out;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .birthday-image {
+            width: 50%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .birthday-image:hover {
+            transform: scale(1.05) rotate(-3deg);
+            filter: brightness(90%);
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666; /* Dark grayish font color */
+            font-family: 'Roboto', sans-serif;
+            transition: color 0.5s ease-in-out;
+        }
+        p:hover {
+            color: #888; /* Lighter grayish font color on hover */
+            transform: scale(1.05);
+        }
+        .poem-line {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            transition: transform 0.3s ease-in-out;
+            font-style: italic;
+        }
+        .poem-line:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f386a1; /* Pinkish confetti color */
+            opacity: 0.8;
+            pointer-events: none;
+            animation: confetti-fall 4s ease-in-out infinite;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em; /* Adjust font size for smaller screens */
+            }
+            .birthday-image {
+                width: 80%; /* Adjust image size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="birthday-image" src="https://pics.craiyon.com/2023-09-22/9174548a202e44d7a6aa75c48f267a21.webp" alt="Cat in Birthday Hat" onclick="celebrate(this)" />
+    <h1>Happy Birthday! Alefiyah.</h1>
+    <p>Wishing you a day filled with joy, laughter, and delicious cake!</p>
+    <p>Best wishes from all of us!</p>
+    <p class="poem-line">A birthday is a special day,</p>
+    <p class="poem-line">When gifts and wishes come your way.</p>
+    <p class="poem-line">May joy and happiness abound,</p>
+    <p class="poem-line">And all your dreams be truly found.</p>
+
+    <script>
+        function celebrate(element) {
+            alert('Happy Birthday! Best wishes to you!');
+            createConfetti(element);
+            // You can add more interactivity or functionality here
+        }
+
+        function createConfetti(parentElement) {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDelay = `${Math.random() * 4}s`;
+                parentElement.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>
